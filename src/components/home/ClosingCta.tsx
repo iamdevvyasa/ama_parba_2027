@@ -146,8 +146,8 @@ export function ClosingCta() {
               className="transition-transform duration-base ease-editorial group-hover:translate-x-1"
             />
           </Button>
-          <Button href="#personalise" variant="onDark" size="lg">
-            Personalise a card
+          <Button href="#pricing" variant="onDark" size="lg">
+            Pre-Order Now
           </Button>
         </div>
       </Reveal>

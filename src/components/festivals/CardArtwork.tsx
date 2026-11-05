@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
  *
  * Original generative concept visuals standing in for the final illustrations.
  * Each festival gets one of six compositions, picked by month index, recoloured
- * from the festival's own theme — so the carousel reads as a varied set rather
+ * from the festival's own theme - so the carousel reads as a varied set rather
  * than one card repeated twelve times.
  *
  * To swap in real artwork: set `cardIllustration` on the festival in
@@ -79,7 +79,7 @@ export function CardArtwork({
           opacity="0.3"
         />
 
-        {/* Corner ticks — a quiet nod to pata-chitra corner marks. */}
+        {/* Corner ticks - a quiet nod to pata-chitra corner marks. */}
         {[
           [20, 20, 1, 1],
           [280, 20, -1, 1],
@@ -133,7 +133,7 @@ function MotifComposition({
   );
 
   switch (motif) {
-    // Sun over a temple arch — solar festivals.
+    // Sun over a temple arch - solar festivals.
     case 0:
       return (
         <>
@@ -165,7 +165,7 @@ function MotifComposition({
         </>
       );
 
-    // Chariot wheel — journey and procession.
+    // Chariot wheel - journey and procession.
     case 1:
       return (
         <>
@@ -204,7 +204,7 @@ function MotifComposition({
         </>
       );
 
-    // Lotus medallion — devotional festivals.
+    // Lotus medallion - devotional festivals.
     case 2:
       return (
         <>
@@ -234,7 +234,7 @@ function MotifComposition({
         </>
       );
 
-    // Swing between two trees — Raja, Dola.
+    // Swing between two trees - Raja, Dola.
     case 3:
       return (
         <>
@@ -271,7 +271,7 @@ function MotifComposition({
         </>
       );
 
-    // Full moon over water — Purnima festivals.
+    // Full moon over water - Purnima festivals.
     case 4:
       return (
         <>
@@ -294,7 +294,7 @@ function MotifComposition({
         </>
       );
 
-    // Harvest sheaf and grain — Nuakhai, Sankranti.
+    // Harvest sheaf and grain - Nuakhai, Sankranti.
     default:
       return (
         <>

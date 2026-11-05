@@ -167,7 +167,7 @@ function MobileDrawer({
         </nav>
 
         <div className="border-t border-earth/10 px-gutter py-5">
-          <Button href="#collection" size="lg" className="w-full" onClick={onClose}>
+          <Button href="#pricing" size="lg" className="w-full" onClick={onClose}>
             Shop Now
           </Button>
         </div>

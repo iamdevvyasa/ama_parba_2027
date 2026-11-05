@@ -32,10 +32,10 @@ function OdiaCornerMotif({ position }: { position: "tl" | "tr" | "bl" | "br" }) 
       } ${position.includes("l") ? "left-2" : "right-2"}`}
     >
       <svg viewBox="0 0 28 28" className="h-full w-full" fill="none">
-        <path d="M 2 26 L 2 2 L 26 2" stroke="#FAF5EC" strokeWidth="1" opacity="0.6" />
-        <path d="M 5 22 L 5 5 L 22 5" stroke="#D88945" strokeWidth="0.8" opacity="0.8" />
+        <path d="M 2 26 L 2 2 L 26 2" stroke="#751F25" strokeWidth="1.2" opacity="0.3" />
+        <path d="M 5 22 L 5 5 L 22 5" stroke="#D88945" strokeWidth="0.8" opacity="0.7" />
         <polygon points="11,6 15,10 11,14 7,10" fill="#D88945" />
-        <circle cx="11" cy="10" r="1.2" fill="#FAF5EC" />
+        <circle cx="11" cy="10" r="1.2" fill="#751F25" />
       </svg>
     </div>
   );
@@ -58,17 +58,55 @@ export function InsideTheBox() {
           align="center"
         />
 
-        {/* ---- Two-Column Showcase: items-start keeps left side 100% stable ---- */}
-        <div className="mt-12 grid items-start gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
+        {/* ---- Centered Variant Switch: Aligns both boxes horizontally in parallel ---- */}
+        <div className="mt-8 flex justify-center">
+          <div
+            role="tablist"
+            aria-label="Box options"
+            className="inline-flex rounded-pill border border-maroon/20 bg-ivory p-1.5 shadow-lift"
+          >
+            {products.map((p) => (
+              <button
+                key={p.id}
+                role="tab"
+                aria-selected={variant === p.id}
+                aria-controls="box-panel"
+                onClick={() => setVariant(p.id)}
+                className={cn(
+                  "relative min-h-[44px] rounded-pill px-5 font-sans text-fluid-xs font-semibold transition-colors duration-base sm:text-fluid-sm",
+                  variant === p.id ? "text-ivory" : "text-earth-700 hover:text-maroon"
+                )}
+              >
+                {variant === p.id && (
+                  <motion.span
+                    layoutId="unboxing-pill"
+                    className="absolute inset-0 rounded-pill bg-gradient-to-r from-maroon to-maroon-600 shadow-soft"
+                    transition={
+                      reduced ? { duration: 0 } : { duration: 0.35, ease: ease.editorial }
+                    }
+                  />
+                )}
+                <span className="relative z-10 whitespace-nowrap">
+                  {p.id === "standard"
+                    ? "Standard Box (13 Cards)"
+                    : "Personalised Box (14 Cards)"}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* ---- Two-Column Showcase: Perfectly parallel, matching height ---- */}
+        <div className="mt-8 grid items-stretch gap-8 lg:grid-cols-2 lg:gap-10">
           {/* ================= LEFT: Stable Packaging Showcase ================= */}
-          <div className="relative flex flex-col self-start w-full lg:sticky lg:top-28">
+          <div className="relative flex flex-col w-full">
             {/* Ambient warm golden glow behind frame */}
             <div
               aria-hidden
               className="pointer-events-none absolute -inset-2 rounded-2xl bg-gradient-to-r from-saffron/20 via-maroon/15 to-saffron/20 blur-xl opacity-75"
             />
 
-            <div className="relative overflow-hidden rounded-panel border-2 border-maroon/30 bg-black shadow-deep ring-2 ring-saffron/30">
+            <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-panel border-2 border-maroon/25 bg-white shadow-card ring-1 ring-maroon/15">
               {/* Sambalpuri Bandha border accents along top & bottom */}
               <SambalpuriBorder height={7} className="absolute inset-x-0 top-0 z-10 opacity-85" />
               <SambalpuriBorder height={7} className="absolute inset-x-0 bottom-0 z-10 opacity-85" />
@@ -88,24 +126,24 @@ export function InsideTheBox() {
               </div>
 
               {/* Packaging Photo */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[1000/750]">
+              <div className="relative flex flex-1 items-center justify-center min-h-[380px] w-full overflow-hidden p-6 sm:p-8">
                 <Image
                   src="/images/packaging.jpg"
-                  alt="Ama Parba Official Keepsake Packaging (2027 Edition) — Rigid Box Made in Odisha"
+                  alt="Ama Parba Official Keepsake Packaging (2027 Edition) - Rigid Box Made in Odisha"
                   fill
                   sizes="(max-width: 1024px) 100vw, 580px"
-                  className="object-contain object-center transition-transform duration-slow ease-editorial hover:scale-[1.03]"
+                  className="object-contain object-center p-3 transition-transform duration-slow ease-editorial hover:scale-[1.02]"
                   priority
                 />
               </div>
 
               {/* Bottom caption strip */}
-              <div className="flex flex-col gap-1 border-t border-ivory/15 bg-earth-950/95 px-5 py-3 text-ivory backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-1 border-t border-maroon/15 bg-maroon px-5 py-3.5 text-ivory backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between">
                 <span className="font-display text-fluid-xs font-semibold text-saffron flex items-center gap-1.5">
                   <MotifRosette size={11} className="text-saffron" />
                   The Keepsake Box & Outer Sleeve
                 </span>
-                <span className="font-sans text-[11px] text-ivory/65">
+                <span className="font-sans text-[11px] text-ivory/80">
                   Heavyweight rigid box · Packed by hand in Odisha
                 </span>
               </div>
@@ -114,53 +152,14 @@ export function InsideTheBox() {
 
           {/* ================= RIGHT: Unboxing Details & Contents ================= */}
           <div className="relative flex flex-col w-full">
-            {/* ---- Variant switch ---- */}
-            <div className="mb-6 flex justify-start">
-              <div
-                role="tablist"
-                aria-label="Box options"
-                className="inline-flex rounded-pill border border-maroon/20 bg-ivory p-1.5 shadow-lift"
-              >
-                {products.map((p) => (
-                  <button
-                    key={p.id}
-                    role="tab"
-                    aria-selected={variant === p.id}
-                    aria-controls="box-panel"
-                    onClick={() => setVariant(p.id)}
-                    className={cn(
-                      "relative min-h-[44px] rounded-pill px-4 font-sans text-fluid-xs font-medium transition-colors duration-base xs:px-5 xs:text-fluid-sm",
-                      variant === p.id ? "text-ivory" : "text-earth-600 hover:text-maroon"
-                    )}
-                  >
-                    {variant === p.id && (
-                      <motion.span
-                        layoutId="unboxing-pill"
-                        className="absolute inset-0 rounded-pill bg-gradient-to-r from-maroon to-maroon-600 shadow-soft"
-                        transition={
-                          reduced ? { duration: 0 } : { duration: 0.35, ease: ease.editorial }
-                        }
-                      />
-                    )}
-                    <span className="relative z-10 whitespace-nowrap">
-                      {p.id === "standard"
-                        ? "Standard Box (13 Cards)"
-                        : "Personalised Box (14 Cards)"}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* ---- Product unboxing panel with stable min-height ---- */}
+            {/* ---- Product unboxing panel with matching height ---- */}
             <div
               id="box-panel"
               role="tabpanel"
-              className="w-full"
+              className="w-full h-full"
             >
-              <div className="rounded-panel border-2 border-maroon/20 bg-gradient-to-b from-[#FAF5EC] via-ivory to-[#F6EDDC] p-6 shadow-lift ring-1 ring-saffron/25 sm:p-8">
-                {/* Stable container so height transitions don't shake the page */}
-                <div className="min-h-[380px]">
+              <div className="flex h-full flex-col justify-between rounded-panel border-2 border-maroon/20 bg-gradient-to-b from-[#FAF5EC] via-ivory to-[#F6EDDC] p-6 shadow-lift ring-1 ring-saffron/25 sm:p-8">
+                <div>
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={product.id}

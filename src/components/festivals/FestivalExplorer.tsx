@@ -14,7 +14,7 @@ import { FestivalCard } from "./FestivalCard";
 
 /**
  * Phase 1 festival explorer: a horizontal rail of cards plus a detail panel
- * that swaps on selection. Rail uses native scroll-snap — no carousel library.
+ * that swaps on selection. Rail uses native scroll-snap - no carousel library.
  * Phase 2 refines the transition between card and detail.
  */
 export function FestivalExplorer() {
@@ -42,7 +42,7 @@ export function FestivalExplorer() {
             className="lg:max-w-2xl"
           />
 
-          {/* Rail controls — desktop only; mobile swipes. */}
+          {/* Rail controls - desktop only; mobile swipes. */}
           <Reveal className="hidden shrink-0 gap-2 lg:flex">
             <RailButton direction="prev" onClick={() => scrollRail(-1)} />
             <RailButton direction="next" onClick={() => scrollRail(1)} />
@@ -193,7 +193,7 @@ function DateBadge({ festival }: { festival: Festival }) {
 
 /**
  * The box holds 13 cards; the report names 12 festivals. Rather than inventing
- * a thirteenth or leaving an empty slot, the rail closes with a sealed card —
+ * a thirteenth or leaving an empty slot, the rail closes with a sealed card -
  * honest about the pending decision and attractive in its own right.
  */
 function ThirteenthCard() {

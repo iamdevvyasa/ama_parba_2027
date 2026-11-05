@@ -30,7 +30,7 @@ export const riseIn: Variants = {
   },
 };
 
-/** Same, but no vertical travel — for elements already in a tight layout. */
+/** Same, but no vertical travel - for elements already in a tight layout. */
 export const fadeIn: Variants = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { duration: duration.slow, ease: ease.editorial } },

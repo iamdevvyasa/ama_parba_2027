@@ -5,7 +5,7 @@ import type { PricingTier, Product } from "@/types";
  * appended to the objective report. These figures supersede earlier drafts.
  *
  * Outstanding: the update's own verification note flags the 5-box CUSTOMISED
- * rate (Rs 329/box) for confirmation — it does not undercut the standard
+ * rate (Rs 329/box) for confirmation - it does not undercut the standard
  * 5-box rate, which is unusual. Flagged below, not silently corrected.
  */
 
@@ -40,7 +40,7 @@ export const products: Product[] = [
     name: "The Ama Parba Box, Personalised",
     tagline: "Fourteen cards. The last one is yours.",
     description:
-      "Everything in the standard box, and one more card — designed around a date you give us. A birthday, an anniversary, the day someone came home. Your names, your occasion, your message.",
+      "Everything in the standard box, and one more card - designed around a date you give us. A birthday, an anniversary, the day someone came home. Your names, your occasion, your message.",
     cardCount: 14,
     badge: "Exclusive",
     contents: [
@@ -151,7 +151,7 @@ export const getProduct = (id: Product["id"]): Product =>
   products.find((p) => p.id === id) ?? products[0];
 
 /**
- * Details the brief explicitly forbids inventing — card dimensions, paper
+ * Details the brief explicitly forbids inventing - card dimensions, paper
  * stock, print process, dispatch dates. Surfaced in the UI as "confirmed
  * before launch" rather than filled with plausible-sounding numbers.
  */

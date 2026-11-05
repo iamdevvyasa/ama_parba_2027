@@ -9,7 +9,7 @@ import type { CustomerStory } from "@/types";
  * Customer story wall.
  *
  * Phase 1 ships the component with SAMPLE content only. Every tile is visibly
- * labelled — the brief forbids presenting invented testimonials as genuine.
+ * labelled - the brief forbids presenting invented testimonials as genuine.
  * Replace `customerStories` in src/data/content.ts with permissioned content.
  */
 export function Stories() {
@@ -56,7 +56,7 @@ export function Stories() {
 function StoryCard({ story, index }: { story: CustomerStory; index: number }) {
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-panel border border-ivory/12 bg-ivory/[0.04] transition-colors duration-base hover:border-ivory/25">
-      {/* Portrait media slot — 9:16, matching the reel format these come from. */}
+      {/* Portrait media slot - 9:16, matching the reel format these come from. */}
       <div className="relative aspect-[9/16] w-full overflow-hidden bg-earth-700">
         <div
           aria-hidden

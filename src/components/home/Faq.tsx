@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { faqs } from "@/data/content";
 
 /**
- * Native <details>/<summary> — keyboard accessible and open-by-default-free
+ * Native <details>/<summary> - keyboard accessible and open-by-default-free
  * without an accordion library or any client JS.
  */
 export function Faq() {

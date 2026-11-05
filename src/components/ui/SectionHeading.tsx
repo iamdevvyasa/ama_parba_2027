@@ -9,7 +9,7 @@ interface SectionHeadingProps {
   align?: "left" | "center";
   tone?: "dark" | "light";
   className?: string;
-  /** Rendered under the lead — usually a CTA or a note. */
+  /** Rendered under the lead - usually a CTA or a note. */
   children?: ReactNode;
 }
 

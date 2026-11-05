@@ -6,7 +6,7 @@ export { SambalpuriBorder };
 
 /**
  * Original decorative primitives, inspired by temple friezes, ikat weaving and
- * pata-chitra borders. Drawn as CSS/SVG geometry — nothing is traced from an
+ * pata-chitra borders. Drawn as CSS/SVG geometry - nothing is traced from an
  * existing artwork.
  */
 
@@ -81,7 +81,7 @@ export function MotifDivider({ className }: { className?: string }) {
 }
 
 /**
- * Large background ornament — a temple-shikhara silhouette built from stacked
+ * Large background ornament - a temple-shikhara silhouette built from stacked
  * arches. Sits behind content at low opacity.
  */
 export function MotifShikhara({ className }: { className?: string }) {

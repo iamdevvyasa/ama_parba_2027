@@ -44,10 +44,10 @@ const policyDetails: Record<
   shipping: {
     title: "Shipping & Delivery Policy",
     subtitle: "Pan-India Tracked Courier Dispatch",
-    body: "We provide tracked courier delivery across all serviceable pincodes in India. Standard boxes are dispatched within 2–3 business days. Personalised boxes are individually custom-printed and dispatched within 3–4 business days. Real-time courier tracking updates are sent directly to your WhatsApp number once shipped.",
+    body: "We provide tracked courier delivery across all serviceable pincodes in India. Standard boxes are dispatched within 2-3 business days. Personalised boxes are individually custom-printed and dispatched within 3-4 business days. Real-time courier tracking updates are sent directly to your WhatsApp number once shipped.",
     highlights: [
       "Tracked pan-India courier delivery",
-      "Dispatched within 2–3 business days from Odisha",
+      "Dispatched within 2-3 business days from Odisha",
       "Live tracking link shared on WhatsApp",
     ],
   },

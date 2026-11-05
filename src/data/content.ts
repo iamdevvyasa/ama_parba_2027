@@ -11,7 +11,7 @@ export const brand = {
   odiaName: "ଆମ ପର୍ବ",
   promise: "A little piece of Odisha, made personal.",
   positioning:
-    "A little box of Odisha, filled with stories — and made personal for someone you love.",
+    "A little box of Odisha, filled with stories - and made personal for someone you love.",
 } as const;
 
 export const announcement = {
@@ -24,9 +24,8 @@ export const navItems: NavItem[] = [
   { label: "Home", href: "#top" },
   { label: "Inside the Box", href: "#collection" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Personalise", href: "#personalise" },
   { label: "Gifting", href: "#gifting" },
-  { label: "Stories", href: "#stories" },
+  { label: "FAQs", href: "#faq" },
 ];
 
 export const hero = {
@@ -62,7 +61,7 @@ export const belonging = {
     },
   ],
   closing:
-    "So we put the year into thirteen cards. Not to replace the festival — to keep the date where you can see it.",
+    "So we put the year into thirteen cards. Not to replace the festival - to keep the date where you can see it.",
 } as const;
 
 export const festivalExplorer = {
@@ -74,18 +73,18 @@ export const festivalExplorer = {
 export const unboxing = {
   eyebrow: "Inside the box",
   heading: "Made to be opened slowly.",
-  lead: "Printed, cut and packed by hand. What is confirmed is below — the rest we will publish once it is final rather than guess at it.",
+  lead: "Printed, cut and packed by hand. What is confirmed is below - the rest we will publish once it is final rather than guess at it.",
 } as const;
 
 export const personalise = {
   eyebrow: "The signature card",
   heading: "A Date Worth Remembering.",
-  lead: "Have a date that means something? Tell us the occasion and date when you order, and we will design one card around it — the fourteenth card in your box.",
+  lead: "Have a date that means something? Tell us the occasion and date when you order, and we will design one card around it - the fourteenth card in your box.",
   steps: [
     { step: "01", title: "Give us the date", detail: "The day itself, and what happened on it." },
-    { step: "02", title: "Tell us the occasion", detail: "Birthday, anniversary, wedding — or something only you have a name for." },
+    { step: "02", title: "Tell us the occasion", detail: "Birthday, anniversary, wedding - or something only you have a name for." },
     { step: "03", title: "Add the names", detail: "Who it is for, and a short message to go with it." },
-    { step: "04", title: "Choose a style", detail: "Traditional, minimal, floral, festive — or let our illustrator decide." },
+    { step: "04", title: "Choose a style", detail: "Traditional, minimal, floral, festive - or let our illustrator decide." },
   ],
   cta: { label: "Personalise a card", href: "#gifting" },
   phaseNote: "The personalisation form opens with checkout in the next release.",
@@ -235,7 +234,7 @@ export const whyAmaParba = [
   {
     id: "verified",
     title: "Odia names, verified",
-    body: "Each card carries the festival's Odia name set in a typeface built for the script — not a transliteration.",
+    body: "Each card carries the festival's Odia name set in a typeface built for the script - not a transliteration.",
   },
   {
     id: "keepsake",
@@ -254,7 +253,6 @@ export const footerGroups: FooterLinkGroup[] = [
     title: "Explore",
     links: [
       { label: "Festival Collection", href: "#collection" },
-      { label: "Personalise a Card", href: "#personalise" },
       { label: "Pricing & Packs", href: "#pricing" },
       { label: "Bulk Gifting", href: "#gifting" },
       { label: "FAQs", href: "#faq" },

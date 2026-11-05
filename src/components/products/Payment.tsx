@@ -106,7 +106,7 @@ Please confirm my pre-order and share dispatch updates!`
         <div className="mt-12 flex justify-center">
           <div className="grid w-full max-w-4xl gap-6 md:grid-cols-2">
             {/* ================= 1. STANDARD BOX ================= */}
-            <div className="relative flex flex-col justify-between rounded-card border border-maroon/20 bg-[#FDFBF7] p-6 shadow-soft sm:p-7">
+            <div className="relative flex flex-col justify-between rounded-card border-2 border-maroon/25 bg-[#FDFBF7] p-6 shadow-soft sm:p-7">
               <OdiaCornerMotif position="tl" />
               <OdiaCornerMotif position="tr" />
               <OdiaCornerMotif position="bl" />
@@ -114,32 +114,35 @@ Please confirm my pre-order and share dispatch updates!`
 
               <div>
                 {/* Header */}
-                <div className="flex items-center justify-between gap-2 border-b border-earth/10 pb-4">
-                  <div>
-                    <span className="font-sans text-[11px] font-semibold uppercase tracking-wider text-maroon">
-                      Standard Edition
+                <div className="border-b border-earth/10 pb-4">
+                  <div className="flex items-start justify-between gap-2 min-h-[52px]">
+                    <div>
+                      <span className="font-sans text-[11px] font-semibold uppercase tracking-wider text-maroon">
+                        Standard Edition
+                      </span>
+                      <h3 className="font-display text-fluid-xl font-bold text-earth-900">
+                        The Ama Parba Box
+                      </h3>
+                    </div>
+                    <span className="shrink-0 rounded-pill bg-maroon/10 px-3 py-1 font-sans text-xs font-semibold text-maroon">
+                      13 Cards
                     </span>
-                    <h3 className="font-display text-fluid-xl font-bold text-earth-900">
-                      The Ama Parba Box
-                    </h3>
                   </div>
-                  <span className="shrink-0 rounded-pill bg-maroon/10 px-3 py-1 font-sans text-xs font-semibold text-maroon">
-                    13 Cards
-                  </span>
+                  <p className="mt-2.5 text-fluid-xs text-earth-600 min-h-[36px]">
+                    13 illustrated cards celebrating Odisha&apos;s cultural year.
+                  </p>
                 </div>
-
-                <p className="mt-3 text-fluid-xs text-earth-600">
-                  13 illustrated cards celebrating Odisha&apos;s cultural year.
-                </p>
 
                 {/* Lower price for more orders tier buttons */}
                 <div className="mt-5">
-                  <div className="flex items-center justify-between text-[11px] font-semibold text-earth-500">
+                  <div className="flex h-7 items-center justify-between text-[11px] font-semibold text-earth-500">
                     <span>Order more, pay less:</span>
-                    {standardSavings > 0 && (
+                    {standardSavings > 0 ? (
                       <span className="inline-flex items-center rounded-pill border border-emerald-300 bg-emerald-50 px-2.5 py-0.5 text-[11px] font-bold text-emerald-700">
                         Save {formatINR(standardSavings)}
                       </span>
+                    ) : (
+                      <span className="text-[11px] text-earth-400">Bulk discount rates</span>
                     )}
                   </div>
 
@@ -161,7 +164,7 @@ Please confirm my pre-order and share dispatch updates!`
                           key={tier.qty}
                           type="button"
                           onClick={() => setStandardQty(tier.qty)}
-                          className={`flex flex-col items-center justify-center rounded-panel border p-2 transition-all ${
+                          className={`flex h-[76px] flex-col items-center justify-center rounded-panel border p-2 transition-all ${
                             active
                               ? "border-maroon bg-maroon text-ivory shadow-soft"
                               : "border-earth/15 bg-ivory/60 text-earth-800 hover:border-maroon/30 hover:bg-white"
@@ -174,7 +177,7 @@ Please confirm my pre-order and share dispatch updates!`
                               /ea
                             </span>
                           </span>
-                          {tier.save && (
+                          {tier.save ? (
                             <span
                               className={`mt-1 rounded-pill px-1.5 py-0.5 text-[9px] font-bold ${
                                 active
@@ -184,6 +187,8 @@ Please confirm my pre-order and share dispatch updates!`
                             >
                               {tier.save}
                             </span>
+                          ) : (
+                            <span className="mt-1 invisible text-[9px] py-0.5">Base</span>
                           )}
                         </button>
                       );
@@ -192,7 +197,7 @@ Please confirm my pre-order and share dispatch updates!`
                 </div>
 
                 {/* Compact Quantity Stepper */}
-                <div className="mt-5 flex items-center justify-between rounded-panel border border-earth/15 bg-white px-4 py-2.5">
+                <div className="mt-5 flex h-[48px] items-center justify-between rounded-panel border border-earth/15 bg-white px-4">
                   <span className="text-xs font-semibold text-earth-600">Quantity</span>
                   <div className="flex items-center gap-3">
                     <button
@@ -218,18 +223,18 @@ Please confirm my pre-order and share dispatch updates!`
                   </div>
                 </div>
 
-                {/* Features (3 specific items, no fluff) */}
-                <ul className="mt-5 space-y-2 text-xs text-earth-700">
-                  <li className="flex items-center gap-2">
-                    <Check size={14} className="text-maroon shrink-0" strokeWidth={2.4} />
+                {/* Features (3 specific items, strictly parallel height) */}
+                <ul className="mt-5 space-y-2 text-xs text-earth-700 min-h-[80px]">
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-maroon shrink-0" strokeWidth={2.4} />
                     <span>13 festival illustrations with Odia & English stories</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Check size={14} className="text-maroon shrink-0" strokeWidth={2.4} />
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-maroon shrink-0" strokeWidth={2.4} />
                     <span>Rigid keepsake box with wooden display stand</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Check size={14} className="text-maroon shrink-0" strokeWidth={2.4} />
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-maroon shrink-0" strokeWidth={2.4} />
                     <span>Free delivery across India</span>
                   </li>
                 </ul>
@@ -237,7 +242,7 @@ Please confirm my pre-order and share dispatch updates!`
 
               {/* Total & Action */}
               <div className="mt-6 border-t border-earth/10 pt-4">
-                <div className="flex items-baseline justify-between">
+                <div className="flex min-h-[36px] items-baseline justify-between">
                   <span className="text-xs text-earth-500">
                     Total ({standardCardCount} cards):
                   </span>
@@ -253,14 +258,16 @@ Please confirm my pre-order and share dispatch updates!`
                   </div>
                 </div>
 
-                <div className="mt-1 flex items-center justify-between text-xs">
+                <div className="mt-1 flex h-6 items-center justify-between text-xs">
                   <span className="text-earth-400">
                     ({formatINR(standardUnitPrice)}/box)
                   </span>
-                  {standardSavings > 0 && (
+                  {standardSavings > 0 ? (
                     <span className="inline-flex items-center rounded-pill border border-emerald-300 bg-emerald-50 px-2.5 py-0.5 font-sans text-[11px] font-bold text-emerald-700">
                       You Save {formatINR(standardSavings)}
                     </span>
+                  ) : (
+                    <span className="invisible text-[11px]">Save</span>
                   )}
                 </div>
 
@@ -268,7 +275,7 @@ Please confirm my pre-order and share dispatch updates!`
                   href={`https://wa.me/918249399817?text=${standardWhatsAppText}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 flex w-full items-center justify-center gap-2 rounded-pill bg-maroon px-5 py-3 font-sans text-xs font-semibold text-ivory shadow-soft transition-all hover:bg-maroon-600 active:scale-98"
+                  className="mt-3 flex h-[44px] w-full items-center justify-center gap-2 rounded-pill bg-maroon px-5 font-sans text-xs font-semibold text-ivory shadow-soft transition-all hover:bg-maroon-600 active:scale-98"
                 >
                   <span>Pre-order on WhatsApp</span>
                   <ArrowRight size={14} />
@@ -285,32 +292,35 @@ Please confirm my pre-order and share dispatch updates!`
 
               <div>
                 {/* Header */}
-                <div className="flex items-center justify-between gap-2 border-b border-earth/10 pb-4">
-                  <div>
-                    <span className="font-sans text-[11px] font-semibold uppercase tracking-wider text-saffron-900">
-                      Personalised Edition
+                <div className="border-b border-earth/10 pb-4">
+                  <div className="flex items-start justify-between gap-2 min-h-[52px]">
+                    <div>
+                      <span className="font-sans text-[11px] font-semibold uppercase tracking-wider text-saffron-900">
+                        Personalised Edition
+                      </span>
+                      <h3 className="font-display text-fluid-xl font-bold text-earth-900">
+                        The Personalised Box
+                      </h3>
+                    </div>
+                    <span className="shrink-0 rounded-pill bg-saffron/25 px-3 py-1 font-sans text-xs font-semibold text-saffron-900">
+                      14 Cards
                     </span>
-                    <h3 className="font-display text-fluid-xl font-bold text-earth-900">
-                      The Personalised Box
-                    </h3>
                   </div>
-                  <span className="shrink-0 rounded-pill bg-saffron/25 px-3 py-1 font-sans text-xs font-semibold text-saffron-900">
-                    14 Cards
-                  </span>
+                  <p className="mt-2.5 text-fluid-xs text-earth-600 min-h-[36px]">
+                    13 festival cards + 1 card illustrated around your personal date.
+                  </p>
                 </div>
-
-                <p className="mt-3 text-fluid-xs text-earth-600">
-                  13 festival cards + 1 card illustrated around your personal date.
-                </p>
 
                 {/* Lower price for more orders tier buttons */}
                 <div className="mt-5">
-                  <div className="flex items-center justify-between text-[11px] font-semibold text-earth-500">
+                  <div className="flex h-7 items-center justify-between text-[11px] font-semibold text-earth-500">
                     <span>Order more, pay less:</span>
-                    {customisedSavings > 0 && (
+                    {customisedSavings > 0 ? (
                       <span className="inline-flex items-center rounded-pill border border-emerald-300 bg-emerald-50 px-2.5 py-0.5 text-[11px] font-bold text-emerald-700">
                         Save {formatINR(customisedSavings)}
                       </span>
+                    ) : (
+                      <span className="text-[11px] text-earth-400">Bulk discount rates</span>
                     )}
                   </div>
 
@@ -332,7 +342,7 @@ Please confirm my pre-order and share dispatch updates!`
                           key={tier.qty}
                           type="button"
                           onClick={() => setCustomisedQty(tier.qty)}
-                          className={`flex flex-col items-center justify-center rounded-panel border p-2 transition-all ${
+                          className={`flex h-[76px] flex-col items-center justify-center rounded-panel border p-2 transition-all ${
                             active
                               ? "border-maroon bg-maroon text-ivory shadow-soft"
                               : "border-earth/15 bg-ivory/60 text-earth-800 hover:border-saffron/40 hover:bg-white"
@@ -345,7 +355,7 @@ Please confirm my pre-order and share dispatch updates!`
                               /ea
                             </span>
                           </span>
-                          {tier.save && (
+                          {tier.save ? (
                             <span
                               className={`mt-1 rounded-pill px-1.5 py-0.5 text-[9px] font-bold ${
                                 active
@@ -355,6 +365,8 @@ Please confirm my pre-order and share dispatch updates!`
                             >
                               {tier.save}
                             </span>
+                          ) : (
+                            <span className="mt-1 invisible text-[9px] py-0.5">Base</span>
                           )}
                         </button>
                       );
@@ -363,7 +375,7 @@ Please confirm my pre-order and share dispatch updates!`
                 </div>
 
                 {/* Compact Quantity Stepper */}
-                <div className="mt-5 flex items-center justify-between rounded-panel border border-earth/15 bg-white px-4 py-2.5">
+                <div className="mt-5 flex h-[48px] items-center justify-between rounded-panel border border-earth/15 bg-white px-4">
                   <span className="text-xs font-semibold text-earth-600">Quantity</span>
                   <div className="flex items-center gap-3">
                     <button
@@ -389,18 +401,18 @@ Please confirm my pre-order and share dispatch updates!`
                   </div>
                 </div>
 
-                {/* Features (3 specific items, no fluff) */}
-                <ul className="mt-5 space-y-2 text-xs text-earth-700">
-                  <li className="flex items-center gap-2">
-                    <Check size={14} className="text-saffron-900 shrink-0" strokeWidth={2.4} />
+                {/* Features (3 specific items, strictly parallel height) */}
+                <ul className="mt-5 space-y-2 text-xs text-earth-700 min-h-[80px]">
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-saffron-900 shrink-0" strokeWidth={2.4} />
                     <span>13 festival cards + 1 personalised special-date card</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Check size={14} className="text-saffron-900 shrink-0" strokeWidth={2.4} />
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-saffron-900 shrink-0" strokeWidth={2.4} />
                     <span>Personalized names, date and message in Odia or English</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Check size={14} className="text-saffron-900 shrink-0" strokeWidth={2.4} />
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-saffron-900 shrink-0" strokeWidth={2.4} />
                     <span>Free delivery across India</span>
                   </li>
                 </ul>
@@ -408,7 +420,7 @@ Please confirm my pre-order and share dispatch updates!`
 
               {/* Total & Action */}
               <div className="mt-6 border-t border-earth/10 pt-4">
-                <div className="flex items-baseline justify-between">
+                <div className="flex min-h-[36px] items-baseline justify-between">
                   <span className="text-xs text-earth-500">
                     Total ({customisedCardCount} cards):
                   </span>
@@ -424,14 +436,16 @@ Please confirm my pre-order and share dispatch updates!`
                   </div>
                 </div>
 
-                <div className="mt-1 flex items-center justify-between text-xs">
+                <div className="mt-1 flex h-6 items-center justify-between text-xs">
                   <span className="text-earth-400">
                     ({formatINR(customisedUnitPrice)}/box)
                   </span>
-                  {customisedSavings > 0 && (
+                  {customisedSavings > 0 ? (
                     <span className="inline-flex items-center rounded-pill border border-emerald-300 bg-emerald-50 px-2.5 py-0.5 font-sans text-[11px] font-bold text-emerald-700">
                       You Save {formatINR(customisedSavings)}
                     </span>
+                  ) : (
+                    <span className="invisible text-[11px]">Save</span>
                   )}
                 </div>
 
@@ -439,7 +453,7 @@ Please confirm my pre-order and share dispatch updates!`
                   href={`https://wa.me/918249399817?text=${customisedWhatsAppText}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 flex w-full items-center justify-center gap-2 rounded-pill bg-gradient-to-r from-maroon to-maroon-600 px-5 py-3 font-sans text-xs font-semibold text-ivory shadow-soft transition-all hover:shadow-lift active:scale-98"
+                  className="mt-3 flex h-[44px] w-full items-center justify-center gap-2 rounded-pill bg-gradient-to-r from-maroon to-maroon-600 px-5 font-sans text-xs font-semibold text-ivory shadow-soft transition-all hover:shadow-lift active:scale-98"
                 >
                   <span>Pre-order on WhatsApp</span>
                   <ArrowRight size={14} />

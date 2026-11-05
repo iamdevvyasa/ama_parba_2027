@@ -30,7 +30,7 @@ export function Belonging() {
 
         <MotifDivider className="mx-auto mt-14 max-w-xs text-saffron/60" />
 
-        {/* Staggered passages — alternating alignment, never a wall of text. */}
+        {/* Staggered passages - alternating alignment, never a wall of text. */}
         <div className="mt-16 flex flex-col gap-14 lg:mt-20 lg:gap-20">
           {belonging.passages.map((passage, i) => {
             const alignment =

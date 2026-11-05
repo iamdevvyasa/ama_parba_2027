@@ -104,7 +104,7 @@ export function Hero() {
         <HeroComposition reduced={!!reduced} />
       </div>
 
-      {/* Scroll indicator — desktop only, where there is room for it. */}
+      {/* Scroll indicator - desktop only, where there is room for it. */}
       <motion.a
         href="#collection"
         aria-label="Scroll to next section"

@@ -23,7 +23,7 @@ export function Logo({
   return (
     <Link
       href="#top"
-      aria-label={`${brand.name} — home`}
+      aria-label={`${brand.name} - home`}
       className={cn(
         "group inline-flex items-center transition-opacity duration-fast hover:opacity-90",
         className,

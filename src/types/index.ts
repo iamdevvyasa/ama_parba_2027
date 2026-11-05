@@ -6,7 +6,7 @@ export type Month =
 
 /**
  * How much we actually know about a festival date.
- * Dates are never rendered unless status is "confirmed" — the brief forbids
+ * Dates are never rendered unless status is "confirmed" - the brief forbids
  * publishing unverified festival dates.
  */
 export type DateStatus = "confirmed" | "unconfirmed";
@@ -32,7 +32,7 @@ export interface ColourTheme {
 export interface Festival {
   id: string;
   month: Month;
-  /** 1–12, used for ordering. */
+  /** 1-12, used for ordering. */
   monthIndex: number;
   name: string;
   /** Verified Odia name. Leave empty rather than transliterating by guess. */
@@ -127,7 +127,7 @@ export interface CustomerStory {
   preview: string;
   image: ImageAsset | null;
   hasVideo: boolean;
-  /** Sample content flag — never present sample stories as real reviews. */
+  /** Sample content flag - never present sample stories as real reviews. */
   sample: true;
 }
 
