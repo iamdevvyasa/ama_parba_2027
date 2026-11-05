@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ivory: #f8f3e9;
+    --ivory-deep: #efe6d5;
+    --maroon: #751f25;
+    --saffron: #d88945;
+    --earth: #46362f;
+    --sage: #7a8669;
+
+    --dur-fast: 180ms;
+    --dur-base: 320ms;
+    --dur-slow: 640ms;
+    --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --header-h: 68px;
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --header-h: 80px;
+    }
+  }
+
+  * {
+    @apply border-earth/10;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Anchor links must not land under the sticky header. */
+    scroll-padding-top: calc(var(--header-h) + 1.5rem);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ivory text-earth-700 font-sans text-fluid-base antialiased;
+    /* Belt-and-braces against horizontal overflow from decorative elements. */
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-earth-900;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Odia script needs a little more line height to breathe. */
+  :lang(or), .font-odia {
+    line-height: 1.75;
+  }
+
+  ::selection {
+    background: var(--maroon);
+    color: var(--ivory);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--maroon);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ================= CLEAN MINIMAL BUTTON-COLORED CURSOR ================= */
+  @media (pointer: fine) {
+    html, body {
+      cursor: none;
+    }
+
+    a, button, [role="button"], [role="tab"], summary, label {
+      cursor: none;
+    }
+
+    input, textarea {
+      cursor: text;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-gutter;
+  }
+
+  .shell-wide {
+    @apply mx-auto w-full max-w-wide px-gutter;
+  }
+
+  /* Eyebrow label above section headings. */
+  .eyebrow {
+    @apply font-sans text-fluid-xs font-medium uppercase tracking-eyebrow text-maroon;
+  }
+
+  /* Hides scrollbar on the horizontal rails while keeping them scrollable. */
+  .rail {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  /*
+   * Odisha-inspired motifs, drawn as CSS so they scale and recolour freely.
+   * Geometry is original — inspired by temple-frieze rhythm and ikat borders,
+   * not traced from any existing artwork.
+   */
+
+  /* Temple-arch repeat, used as a thin frieze above dark sections. */
+  .motif-frieze {
+    background-image: radial-gradient(
+      circle at 50% 100%,
+      currentColor 0 38%,
+      transparent 39%
+    );
+    background-size: 22px 11px;
+    background-repeat: repeat-x;
+  }
+
+  /*
+   * Ikat-style lattice: a fine diagonal cross-hatch, the way a woven weft
+   * reads up close. Thin lines rather than filled squares — filled squares
+   * read as a transparency checkerboard, not as cloth.
+   */
+  .motif-ikat {
+    background-image:
+      repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 15px),
+      repeating-linear-gradient(-45deg, currentColor 0 1px, transparent 1px 15px);
+  }
+
+  /* Authentic Sambalpuri Bandha (Ikat) woven textile border */
+  .motif-band {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='16'%3E%3Crect width='32' height='16' fill='%235A161B'/%3E%3Cline x1='0' y1='0.5' x2='32' y2='0.5' stroke='%23D88945' stroke-width='1'/%3E%3Cpolygon points='0,4 2,1 4,4' fill='%23FAF5EC'/%3E%3Cpolygon points='4,4 6,1 8,4' fill='%23D88945'/%3E%3Cpolygon points='8,4 10,1 12,4' fill='%23FAF5EC'/%3E%3Cpolygon points='12,4 14,1 16,4' fill='%23D88945'/%3E%3Cpolygon points='16,4 18,1 20,4' fill='%23FAF5EC'/%3E%3Cpolygon points='20,4 22,1 24,4' fill='%23D88945'/%3E%3Cpolygon points='24,4 26,1 28,4' fill='%23FAF5EC'/%3E%3Cpolygon points='28,4 30,1 32,4' fill='%23D88945'/%3E%3Cpolygon points='16,3 25,8 16,13 7,8' fill='%23D88945'/%3E%3Cpolygon points='16,4.5 22,8 16,11.5 10,8' fill='%23751F25'/%3E%3Cpolygon points='16,6 19.5,8 16,10 12.5,8' fill='%23FAF5EC'/%3E%3Ccircle cx='16' cy='8' r='1.2' fill='%23D88945'/%3E%3Cpolygon points='0,8 2.5,6 5,8 2.5,10' fill='%23D88945'/%3E%3Cpolygon points='32,8 29.5,6 27,8 29.5,10' fill='%23D88945'/%3E%3Cpolygon points='0,12 2,15 4,12' fill='%23FAF5EC'/%3E%3Cpolygon points='4,12 6,15 8,12' fill='%23D88945'/%3E%3Cpolygon points='8,12 10,15 12,12' fill='%23FAF5EC'/%3E%3Cpolygon points='12,12 14,15 16,12' fill='%23D88945'/%3E%3Cpolygon points='16,12 18,15 20,12' fill='%23FAF5EC'/%3E%3Cpolygon points='20,12 22,15 24,12' fill='%23D88945'/%3E%3Cpolygon points='24,12 26,15 28,12' fill='%23FAF5EC'/%3E%3Cpolygon points='28,12 30,15 32,12' fill='%23D88945'/%3E%3Cline x1='0' y1='15.5' x2='32' y2='15.5' stroke='%23D88945' stroke-width='1'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 32px 16px;
+    height: 16px;
+  }
+
+  .motif-dots {
+    background-image: radial-gradient(currentColor 1px, transparent 1.4px);
+    background-size: 14px 14px;
+  }
+}
+
+@layer utilities {
+  /* Mask a rail's trailing edge so cut-off cards read as intentional. */
+  .fade-edge-r {
+    -webkit-mask-image: linear-gradient(to right, #000 85%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 85%, transparent 100%);
+  }
+
+  .balance {
+    text-wrap: balance;
+  }
+}
