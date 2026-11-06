@@ -226,11 +226,6 @@ Please confirm my pre-order and share dispatch updates!`
                   <li className="flex min-h-[18px] items-start gap-2">
                     <Check size={14} className="mt-0.5 text-maroon shrink-0" strokeWidth={2.4} />
                     <span>13 parba illustrations with Odia & English stories</span>
-                  </li>
-                  <li className="flex min-h-[34px] items-start gap-2">
-                    <Check size={14} className="mt-0.5 text-maroon shrink-0" strokeWidth={2.4} />
-                    <span>Rigid keepsake box with wooden display stand</span>
-                  </li>
                   <li className="flex min-h-[18px] items-start gap-2">
                     <Check size={14} className="mt-0.5 text-maroon shrink-0" strokeWidth={2.4} />
                     <span>Free delivery across India</span>
