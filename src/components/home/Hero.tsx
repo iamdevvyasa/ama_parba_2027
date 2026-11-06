@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, MoveDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { MotifShikhara } from "@/components/ui/Motif";
 import { SambalpuriFrame } from "@/components/ui/SambalpuriFrame";
 import { hero } from "@/data/content";
 import { duration, ease, lineReveal } from "@/lib/motion";

@@ -7,6 +7,7 @@ import { ArrowDown, Check, Package, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { SambalpuriBorder } from "@/components/ui/SambalpuriBorder";
 import { MotifRosette } from "@/components/ui/Motif";
+import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { unboxing } from "@/data/content";
 import { products, unconfirmedProductDetails } from "@/data/products";

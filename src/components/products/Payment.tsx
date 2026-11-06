@@ -221,11 +221,12 @@ Please confirm my pre-order and share dispatch updates!`
                   </div>
                 </div>
 
-                {/* Features (3 specific items, strictly parallel height) */}
-                <ul className="mt-5 space-y-2 text-xs text-earth-700 min-h-[80px]">
+                {/* Features (strictly parallel height) */}
+                <ul className="mt-5 space-y-2 text-xs text-earth-700 min-h-[86px]">
                   <li className="flex min-h-[18px] items-start gap-2">
                     <Check size={14} className="mt-0.5 text-maroon shrink-0" strokeWidth={2.4} />
                     <span>13 parba illustrations with Odia & English stories</span>
+                  </li>
                   <li className="flex min-h-[18px] items-start gap-2">
                     <Check size={14} className="mt-0.5 text-maroon shrink-0" strokeWidth={2.4} />
                     <span>Free delivery across India</span>
@@ -393,7 +394,7 @@ Please confirm my pre-order and share dispatch updates!`
                 </div>
 
                 {/* Features (3 specific items, strictly parallel height) */}
-                <ul className="mt-5 space-y-2 text-xs text-earth-700 min-h-[80px]">
+                <ul className="mt-5 space-y-2 text-xs text-earth-700 min-h-[86px]">
                   <li className="flex min-h-[18px] items-start gap-2">
                     <Check size={14} className="mt-0.5 text-saffron-900 shrink-0" strokeWidth={2.4} />
                     <span>13 parba cards + 1 personalised special-date card</span>
