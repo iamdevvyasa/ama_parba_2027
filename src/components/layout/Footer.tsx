@@ -190,7 +190,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-14 flex flex-col gap-4 border-t border-ivory/15 pt-7 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-fluid-xs text-ivory/60">
-            © {new Date().getFullYear()} {brand.name} (ଆମ ପର୍ବ). All rights reserved by{" "}
+            © {new Date().getFullYear()} {brand.name} (ଆମ ପର୍ବ). Developed by{" "}
             <a
               href="https://devsamaj.tech"
               target="_blank"
