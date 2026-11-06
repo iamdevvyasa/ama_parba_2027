@@ -16,7 +16,7 @@ export const brand = {
 
 export const announcement = {
   // Placeholder: replace once the dispatch schedule is confirmed (report section 16).
-  message: "Free delivery across India · Parba (ପର୍ବ) dispatch dates announced soon",
+  message: "Free delivery across India · Ama Parba (ଆମ ପର୍ବ) dispatch dates announced soon",
   href: "#collection",
 } as const;
 
