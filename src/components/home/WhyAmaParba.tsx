@@ -10,8 +10,8 @@ export function WhyAmaParba() {
       <SambalpuriBorder className="absolute inset-x-0 top-0 z-10" />
       <div className="shell">
         <SectionHeading
-          eyebrow="Why Ama Parba"
-          heading="Made like something meant to be kept."
+          eyebrow="Why Ama Parba · ପରମ୍ପରା"
+          heading="Crafted like a Smruti (ସ୍ମୃତି) meant to be kept."
           className="max-w-2xl"
         />
 

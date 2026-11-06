@@ -13,14 +13,14 @@ export const products: Product[] = [
   {
     id: "standard",
     name: "The Ama Parba Box",
-    tagline: "Thirteen cards. One year of Odisha.",
+    tagline: "Thirteen cards. One Barsha (ବର୍ଷ) of Odisha.",
     description:
       "Thirteen illustrated festival cards, one for each parba we keep. Painted front, the month and its traditions on the back. Made to stand on a desk, be posted home, or be kept.",
     cardCount: 13,
     contents: [
       {
         count: 13,
-        label: "Festival cards",
+        label: "Parba (ପର୍ବ) cards",
         detail: "An original illustration on the front, the festival's story and traditions on the back.",
       },
       {
@@ -38,7 +38,7 @@ export const products: Product[] = [
   {
     id: "customised",
     name: "The Ama Parba Box, Personalised",
-    tagline: "Fourteen cards. The last one is yours.",
+    tagline: "Fourteen cards. The last one is Nijara (ନିଜର).",
     description:
       "Everything in the standard box, and one more card - designed around a date you give us. A birthday, an anniversary, the day someone came home. Your names, your occasion, your message.",
     cardCount: 14,
@@ -46,12 +46,12 @@ export const products: Product[] = [
     contents: [
       {
         count: 13,
-        label: "Festival cards",
+        label: "Parba (ପର୍ବ) cards",
         detail: "The complete Odisha collection, exactly as in the standard box.",
       },
       {
         count: 1,
-        label: "Personalised special-date card",
+        label: "Nijara (ନିଜର) special-date card",
         detail: "Designed around your date, occasion, names and message. Odia, English or both.",
       },
       {

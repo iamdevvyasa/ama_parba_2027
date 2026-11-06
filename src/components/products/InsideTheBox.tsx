@@ -88,8 +88,8 @@ export function InsideTheBox() {
                 )}
                 <span className="relative z-10 whitespace-nowrap">
                   {p.id === "standard"
-                    ? "Standard Box (13 Cards)"
-                    : "Personalised Box (14 Cards)"}
+                    ? "Standard Parba Box (13 Cards)"
+                    : "Personalised Parba Box (14 Cards)"}
                 </span>
               </button>
             ))}
@@ -141,7 +141,7 @@ export function InsideTheBox() {
               <div className="flex flex-col gap-1 border-t border-maroon/15 bg-maroon px-5 py-3.5 text-ivory backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between">
                 <span className="font-display text-fluid-xs font-semibold text-saffron flex items-center gap-1.5">
                   <MotifRosette size={11} className="text-saffron" />
-                  The Keepsake Box & Outer Sleeve
+                  The Keepsake Pedi (ପେଡ଼ି) & Outer Sleeve
                 </span>
                 <span className="font-sans text-[11px] text-ivory/80">
                   Heavyweight rigid box · Packed by hand in Odisha

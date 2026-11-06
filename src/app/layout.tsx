@@ -36,7 +36,7 @@ const balooBhaina = Baloo_Bhaina_2({
 export const metadata: Metadata = {
   metadataBase: new URL("https://amaparba.example"),
   title: {
-    default: `${brand.name} - A little piece of Odisha, made personal`,
+    default: `${brand.name} (${brand.odiaName}) - A little piece of Odisha, made personal`,
     template: `%s · ${brand.name}`,
   },
   description:

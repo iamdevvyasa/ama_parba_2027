@@ -26,8 +26,8 @@ export function Faq() {
       <div className="shell">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <SectionHeading
-            eyebrow="Questions"
-            heading="The short answers."
+            eyebrow="Questions · ପ୍ରଶ୍ନ"
+            heading="The short answers · ସହଜ ଉତ୍ତର."
             lead="Anything else, and we are a message away."
           />
 

@@ -59,8 +59,8 @@ const config: Config = {
       },
       fontFamily: {
         // Loaded via next/font in src/app/layout.tsx
-        display: ["var(--font-display)", "Georgia", "serif"],
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-odia)", "Georgia", "serif"],
+        sans: ["var(--font-sans)", "var(--font-odia)", "system-ui", "sans-serif"],
         odia: ["var(--font-odia)", "var(--font-sans)", "sans-serif"],
       },
       fontSize: {

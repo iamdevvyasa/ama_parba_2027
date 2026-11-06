@@ -54,9 +54,9 @@ export function Gifting() {
       <SambalpuriBorder className="absolute inset-x-0 top-0 z-10" />
       <div className="shell">
         <SectionHeading
-          eyebrow="Gifting"
-          heading="Someone is waiting for a parcel from home."
-          lead="Six ways this box has been given. Pick the one that sounds like your people."
+          eyebrow="Gifting · ଉପହାର"
+          heading="Someone is waiting for a parcel from Ghara (ଘର)."
+          lead="Six ways this box has been given. Pick the one that sounds like your people (ଆପଣାର ଲୋକ)."
           className="max-w-2xl"
         />
 

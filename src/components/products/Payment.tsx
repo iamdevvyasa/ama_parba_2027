@@ -96,9 +96,9 @@ Please confirm my pre-order and share dispatch updates!`
 
       <div className="shell relative z-10">
         <SectionHeading
-          eyebrow="Pricing"
-          heading="Choose your edition"
-          lead="Pre-order a single keepsake, or save more with festival gifting rates."
+          eyebrow="Pricing · ମୂଲ୍ୟ"
+          heading="Choose your Parba (ପର୍ବ) edition"
+          lead="Pre-order a single Smruti (ସ୍ମୃତି), or save more with festival gifting rates."
           align="center"
         />
 
@@ -115,21 +115,19 @@ Please confirm my pre-order and share dispatch updates!`
               <div>
                 {/* Header */}
                 <div className="border-b border-earth/10 pb-4">
-                  <div className="flex items-start justify-between gap-2 min-h-[52px]">
-                    <div>
-                      <span className="font-sans text-[11px] font-semibold uppercase tracking-wider text-maroon">
-                        Standard Edition
-                      </span>
-                      <h3 className="font-display text-fluid-xl font-bold text-earth-900">
-                        The Ama Parba Box
-                      </h3>
-                    </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-sans text-[11px] font-semibold uppercase tracking-wider text-maroon">
+                      Standard Parba Edition
+                    </span>
                     <span className="shrink-0 rounded-pill bg-maroon/10 px-3 py-1 font-sans text-xs font-semibold text-maroon">
                       13 Cards
                     </span>
                   </div>
-                  <p className="mt-2.5 text-fluid-xs text-earth-600 min-h-[36px]">
-                    13 illustrated cards celebrating Odisha&apos;s cultural year.
+                  <h3 className="mt-2 font-display text-fluid-xl font-bold text-earth-900 sm:whitespace-nowrap">
+                    The Ama Parba Box
+                  </h3>
+                  <p className="mt-2 flex min-h-[38px] items-center text-fluid-xs text-earth-600">
+                    13 illustrated cards celebrating Odisha&apos;s cultural Barsha (ବର୍ଷ).
                   </p>
                 </div>
 
@@ -225,15 +223,15 @@ Please confirm my pre-order and share dispatch updates!`
 
                 {/* Features (3 specific items, strictly parallel height) */}
                 <ul className="mt-5 space-y-2 text-xs text-earth-700 min-h-[80px]">
-                  <li className="flex items-start gap-2">
+                  <li className="flex min-h-[18px] items-start gap-2">
                     <Check size={14} className="mt-0.5 text-maroon shrink-0" strokeWidth={2.4} />
-                    <span>13 festival illustrations with Odia & English stories</span>
+                    <span>13 parba illustrations with Odia & English stories</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex min-h-[34px] items-start gap-2">
                     <Check size={14} className="mt-0.5 text-maroon shrink-0" strokeWidth={2.4} />
                     <span>Rigid keepsake box with wooden display stand</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex min-h-[18px] items-start gap-2">
                     <Check size={14} className="mt-0.5 text-maroon shrink-0" strokeWidth={2.4} />
                     <span>Free delivery across India</span>
                   </li>
@@ -293,21 +291,19 @@ Please confirm my pre-order and share dispatch updates!`
               <div>
                 {/* Header */}
                 <div className="border-b border-earth/10 pb-4">
-                  <div className="flex items-start justify-between gap-2 min-h-[52px]">
-                    <div>
-                      <span className="font-sans text-[11px] font-semibold uppercase tracking-wider text-saffron-900">
-                        Personalised Edition
-                      </span>
-                      <h3 className="font-display text-fluid-xl font-bold text-earth-900">
-                        The Personalised Box
-                      </h3>
-                    </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-sans text-[11px] font-semibold uppercase tracking-wider text-saffron-900">
+                      Personalised (ନିଜର) Edition
+                    </span>
                     <span className="shrink-0 rounded-pill bg-saffron/25 px-3 py-1 font-sans text-xs font-semibold text-saffron-900">
                       14 Cards
                     </span>
                   </div>
-                  <p className="mt-2.5 text-fluid-xs text-earth-600 min-h-[36px]">
-                    13 festival cards + 1 card illustrated around your personal date.
+                  <h3 className="mt-2 font-display text-fluid-xl font-bold text-earth-900 sm:whitespace-nowrap">
+                    The Personalised Box
+                  </h3>
+                  <p className="mt-2 flex min-h-[38px] items-center text-fluid-xs text-earth-600">
+                    13 parba cards + 1 card illustrated around your personal date.
                   </p>
                 </div>
 
@@ -403,15 +399,15 @@ Please confirm my pre-order and share dispatch updates!`
 
                 {/* Features (3 specific items, strictly parallel height) */}
                 <ul className="mt-5 space-y-2 text-xs text-earth-700 min-h-[80px]">
-                  <li className="flex items-start gap-2">
+                  <li className="flex min-h-[18px] items-start gap-2">
                     <Check size={14} className="mt-0.5 text-saffron-900 shrink-0" strokeWidth={2.4} />
-                    <span>13 festival cards + 1 personalised special-date card</span>
+                    <span>13 parba cards + 1 personalised special-date card</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex min-h-[34px] items-start gap-2">
                     <Check size={14} className="mt-0.5 text-saffron-900 shrink-0" strokeWidth={2.4} />
                     <span>Personalized names, date and message in Odia or English</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex min-h-[18px] items-start gap-2">
                     <Check size={14} className="mt-0.5 text-saffron-900 shrink-0" strokeWidth={2.4} />
                     <span>Free delivery across India</span>
                   </li>
@@ -465,7 +461,7 @@ Please confirm my pre-order and share dispatch updates!`
 
         {/* Minimalist reassurance line (No AI boilerplate) */}
         <p className="mt-10 text-center font-sans text-xs text-earth-400">
-          Free tracked delivery across India · Packed by hand in Bhubaneswar · No hidden charges
+          Free tracked delivery across India · Packed with sneha (ସ୍ନେହ) in Bhubaneswar · No hidden charges
         </p>
       </div>
     </section>

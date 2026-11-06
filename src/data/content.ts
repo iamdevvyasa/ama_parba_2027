@@ -16,7 +16,7 @@ export const brand = {
 
 export const announcement = {
   // Placeholder: replace once the dispatch schedule is confirmed (report section 16).
-  message: "Free delivery across India · Dispatch dates announced soon",
+  message: "Free delivery across India · Parba (ପର୍ବ) dispatch dates announced soon",
   href: "#collection",
 } as const;
 
@@ -29,16 +29,16 @@ export const navItems: NavItem[] = [
 ];
 
 export const hero = {
-  eyebrow: "The Odisha Festival Card Collection",
-  headline: ["Every Month Has a Story.", "Make It Yours."],
+  eyebrow: "The Odisha Parba (ପର୍ବ) Collection",
+  headline: ["Every Parba Has a Story.", "Make It Yours."],
   supporting:
-    "Thirteen celebrations. Countless memories. A little box of Odisha, made for you and the people you love.",
+    "Thirteen celebrations. Countless smruti (ସ୍ମୃତି). A little box of Odisha, made for you and the people you love.",
   primaryCta: { label: "Explore Collection", href: "#collection" },
   secondaryCta: { label: "Buy Now", href: "#pricing" },
   stats: [
-    { value: "13", label: "Festival cards" },
-    { value: "12", label: "Months of Odisha" },
-    { value: "1", label: "Card that is only yours" },
+    { value: "13", label: "Parba (ପର୍ବ) cards" },
+    { value: "12", label: "Masa (ମାସ) of Odisha" },
+    { value: "1", label: "Nijara (ନିଜର) card" },
   ],
 } as const;
 
@@ -71,8 +71,8 @@ export const festivalExplorer = {
 } as const;
 
 export const unboxing = {
-  eyebrow: "Inside the box",
-  heading: "Made to be opened slowly.",
+  eyebrow: "Inside the Box · ପେଡ଼ି",
+  heading: "Made to be opened slowly · ସ୍ମୃତି",
   lead: "Printed, cut and packed by hand. What is confirmed is below - the rest we will publish once it is final rather than guess at it.",
 } as const;
 
@@ -103,7 +103,7 @@ export const occasions: Occasion[] = [
 export const giftingAudiences: GiftingAudience[] = [
   {
     id: "parents",
-    title: "Parents and family",
+    title: "Parents & Family · ବାପା-ବୋଉ",
     line: "For the ones who taught you the dates.",
     body: "They kept every festival so you would know what to keep. Give the year back to them, printed.",
     image: null,
@@ -111,7 +111,7 @@ export const giftingAudiences: GiftingAudience[] = [
   },
   {
     id: "away",
-    title: "Odias living away",
+    title: "Odias living away · ପ୍ରବାସୀ",
     line: "For everyone who misses Odisha without saying it.",
     body: "Bengaluru, Dubai, Berlin. A desk looks different with Rath Yatra standing on it.",
     image: null,
@@ -119,7 +119,7 @@ export const giftingAudiences: GiftingAudience[] = [
   },
   {
     id: "friends",
-    title: "Friends",
+    title: "Friends · ସାଙ୍ଗ ସାଥୀ",
     line: "For the group chat that only wakes up at Raja.",
     body: "The one gift nobody re-gifts, because it has their month in it.",
     image: null,
@@ -127,7 +127,7 @@ export const giftingAudiences: GiftingAudience[] = [
   },
   {
     id: "someone-special",
-    title: "Someone special",
+    title: "Someone special · ପ୍ରିୟଜନ",
     line: "For the person your year revolves around.",
     body: "Thirteen festivals, and a fourteenth card with the only date that matters to you both.",
     image: null,
@@ -135,7 +135,7 @@ export const giftingAudiences: GiftingAudience[] = [
   },
   {
     id: "weddings",
-    title: "Weddings and celebrations",
+    title: "Weddings & Bahaghara · ବାହାଘର",
     line: "For a return gift guests will keep.",
     body: "A box at every seat, with your date printed on the card inside.",
     image: null,
@@ -143,7 +143,7 @@ export const giftingAudiences: GiftingAudience[] = [
   },
   {
     id: "corporate",
-    title: "Corporate gifting",
+    title: "Corporate gifting · ଉପହାର",
     line: "For a team that is more Odia than it looks.",
     body: "New Year hampers that get used for twelve months. Bulk pricing and custom messages available on request.",
     image: null,
@@ -228,22 +228,22 @@ export const customerStories: CustomerStory[] = [
 export const whyAmaParba = [
   {
     id: "illustrated",
-    title: "Illustrated, not printed over a photo",
+    title: "Illustrated with Kala (କଳା), not photo filters",
     body: "Every festival is drawn from scratch. No stock imagery, no filters over somebody else's photograph.",
   },
   {
     id: "verified",
-    title: "Odia names, verified",
+    title: "Odia names, verified · ଶୁଦ୍ଧ ନାମ",
     body: "Each card carries the festival's Odia name set in a typeface built for the script - not a transliteration.",
   },
   {
     id: "keepsake",
-    title: "Made to keep",
+    title: "Made as a Smruti (ସ୍ମୃତି) to keep",
     body: "Thirteen cards that outlast the year they were printed for. Stand them, post them, or keep the set.",
   },
   {
     id: "personal",
-    title: "One card only you have",
+    title: "One card truly Nijara (ନିଜର)",
     body: "The personalised card turns a collection into a gift. Your date, your names, your occasion.",
   },
 ];

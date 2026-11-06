@@ -125,10 +125,10 @@ export function ClosingCta() {
           />
         </div>
         <h2 className="mx-auto mt-4 max-w-[18ch] text-fluid-3xl tracking-tighter2 text-ivory balance">
-          A little piece of Odisha, made personal.
+          A little piece of our Ghara (ଘର), made personal.
         </h2>
         <p className="mx-auto mt-6 max-w-[44ch] text-fluid-lg leading-relaxed text-ivory/65">
-          Thirteen festivals in a box, and one card that exists only because of
+          Thirteen Parba (ପର୍ବ) in a box, and one card that exists only because of
           a date you gave us.
         </p>
 
