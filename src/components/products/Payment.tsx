@@ -39,6 +39,105 @@ function OdiaCornerMotif({ position }: { position: "tl" | "tr" | "bl" | "br" }) 
 export function Payment() {
   const [standardQty, setStandardQty] = useState<number>(1);
   const [customisedQty, setCustomisedQty] = useState<number>(1);
+  const [paymentState, setPaymentState] = useState<{
+    variant: "standard" | "customised";
+    status: "loading" | "success" | "error";
+    message: string;
+  } | null>(null);
+  const [checkoutVariant, setCheckoutVariant] = useState<"standard" | "customised" | null>(null);
+  const [customer, setCustomer] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    addressLine1: "",
+    addressLine2: "",
+    city: "",
+    state: "",
+    postalCode: "",
+  });
+
+  async function startPayment(
+    event: React.FormEvent<HTMLFormElement>,
+    variant: "standard" | "customised",
+    quantity: number,
+  ) {
+    event.preventDefault();
+    setCheckoutVariant(null);
+    setPaymentState({ variant, status: "loading", message: "Preparing secure checkout..." });
+
+    try {
+      const orderResponse = await fetch("/api/payments/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ variant, quantity, customer }),
+      });
+      const order = (await orderResponse.json()) as { error?: string; orderId?: string; amount?: number; currency?: string; keyId?: string };
+      if (!orderResponse.ok || !order.orderId || !order.amount || !order.currency || !order.keyId) {
+        throw new Error(order.error ?? "Unable to start payment.");
+      }
+
+      await new Promise<void>((resolve, reject) => {
+        const existingScript = document.querySelector<HTMLScriptElement>(
+          'script[src="https://checkout.razorpay.com/v1/checkout.js"]',
+        );
+        if (existingScript) {
+          if (window.Razorpay) resolve();
+          else existingScript.addEventListener("load", () => resolve(), { once: true });
+          return;
+        }
+        const script = document.createElement("script");
+        script.src = "https://checkout.razorpay.com/v1/checkout.js";
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error("Unable to load payment checkout."));
+        document.body.appendChild(script);
+      });
+
+      const razorpay = new window.Razorpay({
+        key: order.keyId,
+        amount: order.amount,
+        currency: order.currency,
+        name: "Ama Parba",
+        description: variant === "standard" ? "The Ama Parba Box" : "The Personalised Ama Parba Box",
+        order_id: order.orderId,
+        theme: { color: "#751F25" },
+        handler: async (response) => {
+          try {
+            const verificationResponse = await fetch("/api/payments/verify", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(response),
+            });
+            const verification = (await verificationResponse.json()) as { error?: string };
+            if (!verificationResponse.ok) {
+              throw new Error(verification.error ?? "Payment verification failed.");
+            }
+            setPaymentState({
+              variant,
+              status: "success",
+              message: "Payment received. We will contact you shortly for delivery details.",
+            });
+          } catch (error) {
+            setPaymentState({
+              variant,
+              status: "error",
+              message: error instanceof Error ? error.message : "Payment verification failed.",
+            });
+          }
+        },
+        modal: {
+          ondismiss: () =>
+            setPaymentState({ variant, status: "error", message: "Payment was cancelled." }),
+        },
+      });
+      razorpay.open();
+    } catch (error) {
+      setPaymentState({
+        variant,
+        status: "error",
+        message: error instanceof Error ? error.message : "Unable to start payment.",
+      });
+    }
+  }
 
   // Simple / Standard Box Pricing calculations
   const standardUnitPrice = getStandardUnitPrice(standardQty);
@@ -52,44 +151,6 @@ export function Payment() {
   const customisedCardCount = customisedQty * 14;
   const customisedSavings = getCustomisedTierSavings(customisedQty);
 
-  const standardWhatsAppText = encodeURIComponent(
-`Hi Ama Parba, I would like to Pre-Order:
-
-Product: The Ama Parba Box (Standard Edition)
-Quantity: ${standardQty} Box${standardQty > 1 ? "es" : ""} (${standardCardCount} cards)
-Total Amount: Rs ${standardTotal} (Rs ${standardUnitPrice}/box)
-
---- Pre-Order Receiver Details ---
-Name: 
-Email: 
-Phone Number: 
-City: 
-PIN Code: 
-
-Please confirm my pre-order and share dispatch updates!`
-  );
-
-  const customisedWhatsAppText = encodeURIComponent(
-`Hi Ama Parba, I would like to Pre-Order:
-
-Product: The Personalised Box (Exclusive 14 Cards)
-Quantity: ${customisedQty} Box${customisedQty > 1 ? "es" : ""} (${customisedCardCount} cards)
-Total Amount: Rs ${customisedTotal} (Rs ${customisedUnitPrice}/box)
-
---- Pre-Order Receiver Details ---
-Name: 
-Email: 
-Phone Number: 
-City: 
-PIN Code: 
-
---- Custom Date & Occasion Details ---
-Date & Occasion: 
-Names & Message: 
-
-Please confirm my pre-order and share dispatch updates!`
-  );
-
   return (
     <section id="pricing" className="relative overflow-hidden bg-[#FAF6EE] py-section">
       <SambalpuriBorder className="absolute inset-x-0 top-0 z-10" />
@@ -98,7 +159,7 @@ Please confirm my pre-order and share dispatch updates!`
         <SectionHeading
           eyebrow="Pricing · ମୂଲ୍ୟ"
           heading="Choose your Parba (ପର୍ବ) edition"
-          lead="Pre-order a single Smruti (ସ୍ମୃତି), or save more with festival gifting rates."
+          lead="Buy a single Smruti (ସ୍ମୃତି), or save more with festival gifting rates."
           align="center"
         />
 
@@ -265,15 +326,20 @@ Please confirm my pre-order and share dispatch updates!`
                   )}
                 </div>
 
-                <a
-                  href={`https://wa.me/918249399817?text=${standardWhatsAppText}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => setCheckoutVariant("standard")}
+                  disabled={paymentState?.status === "loading"}
                   className="mt-3 flex h-[44px] w-full items-center justify-center gap-2 rounded-pill bg-maroon px-5 font-sans text-xs font-semibold text-ivory shadow-soft transition-all hover:bg-maroon-600 active:scale-98"
                 >
-                  <span>Pre-order on WhatsApp</span>
+                  <span>{paymentState?.variant === "standard" && paymentState.status === "loading" ? "Opening checkout..." : "Pay securely"}</span>
                   <ArrowRight size={14} />
-                </a>
+                </button>
+                {paymentState?.variant === "standard" && (
+                  <p className={`mt-2 text-center text-xs ${paymentState.status === "success" ? "text-emerald-700" : "text-earth-500"}`}>
+                    {paymentState.message}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -441,15 +507,20 @@ Please confirm my pre-order and share dispatch updates!`
                   )}
                 </div>
 
-                <a
-                  href={`https://wa.me/918249399817?text=${customisedWhatsAppText}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => setCheckoutVariant("customised")}
+                  disabled={paymentState?.status === "loading"}
                   className="mt-3 flex h-[44px] w-full items-center justify-center gap-2 rounded-pill bg-gradient-to-r from-maroon to-maroon-600 px-5 font-sans text-xs font-semibold text-ivory shadow-soft transition-all hover:shadow-lift active:scale-98"
                 >
-                  <span>Pre-order on WhatsApp</span>
+                  <span>{paymentState?.variant === "customised" && paymentState.status === "loading" ? "Opening checkout..." : "Pay securely"}</span>
                   <ArrowRight size={14} />
-                </a>
+                </button>
+                {paymentState?.variant === "customised" && (
+                  <p className={`mt-2 text-center text-xs ${paymentState.status === "success" ? "text-emerald-700" : "text-earth-500"}`}>
+                    {paymentState.message}
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -460,6 +531,84 @@ Please confirm my pre-order and share dispatch updates!`
           Free tracked delivery across India · Packed with sneha (ସ୍ନେହ) in Bhubaneswar · No hidden charges
         </p>
       </div>
+
+      {checkoutVariant && (
+        <div
+          className="fixed inset-0 z-50 grid place-items-center bg-earth-900/60 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="checkout-title"
+        >
+          <form
+            onSubmit={(event) =>
+              startPayment(
+                event,
+                checkoutVariant,
+                checkoutVariant === "standard" ? standardQty : customisedQty,
+              )
+            }
+            className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-card bg-[#FDFBF7] p-6 shadow-lift sm:p-8"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="font-sans text-xs font-semibold uppercase tracking-wider text-maroon">
+                  Secure delivery details
+                </p>
+                <h2 id="checkout-title" className="mt-1 font-display text-2xl font-bold text-earth-900">
+                  Where should we deliver?
+                </h2>
+                <p className="mt-2 text-sm text-earth-600">
+                  Your address is used only to fulfil this order.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setCheckoutVariant(null)}
+                className="rounded-full px-3 py-1 text-2xl leading-none text-earth-500 hover:bg-earth/10"
+                aria-label="Close checkout"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              {[
+                ["name", "Full name", "text"],
+                ["email", "Email address", "email"],
+                ["phone", "10-digit phone number", "tel"],
+                ["addressLine1", "Address line 1", "text"],
+                ["addressLine2", "Address line 2 (optional)", "text"],
+                ["city", "City", "text"],
+                ["state", "State", "text"],
+                ["postalCode", "PIN code", "text"],
+              ].map(([field, label, type]) => (
+                <label key={field} className={field === "addressLine1" || field === "addressLine2" ? "sm:col-span-2" : ""}>
+                  <span className="text-xs font-semibold text-earth-700">{label}</span>
+                  <input
+                    required={field !== "addressLine2"}
+                    type={type}
+                    inputMode={field === "phone" || field === "postalCode" ? "numeric" : undefined}
+                    maxLength={field === "phone" ? 10 : field === "postalCode" ? 6 : undefined}
+                    value={customer[field as keyof typeof customer]}
+                    onChange={(event) =>
+                      setCustomer((current) => ({ ...current, [field]: event.target.value }))
+                    }
+                    className="mt-1 min-h-11 w-full rounded-panel border border-earth/20 bg-white px-3 text-sm text-earth-900 outline-none focus:border-maroon focus:ring-2 focus:ring-maroon/20"
+                  />
+                </label>
+              ))}
+            </div>
+
+            <button
+              type="submit"
+              className="mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-pill bg-maroon px-5 font-sans text-sm font-semibold text-ivory shadow-soft hover:bg-maroon-600"
+            >
+              Continue to secure payment
+              <ArrowRight size={16} />
+            </button>
+          </form>
+        </div>
+      )}
     </section>
   );
 }

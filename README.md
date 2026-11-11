@@ -1,9 +1,8 @@
 # Ama Parba — Phase 1 Frontend
 
 Premium cultural gifting storefront for the Odisha festival card collection.
-Phase 1 is the complete front end: design system, homepage, festival explorer,
-product presentation and responsive layout. **No backend, database, auth,
-payments or admin** — by design.
+The storefront includes Razorpay order creation and server-side payment
+signature verification.
 
 ## Run it
 
@@ -144,6 +143,36 @@ personalised special-date card).
 > for confirmation — it does not undercut the standard 5-box rate, which is
 > unusual. Carried through as written and flagged in `data/products.ts` rather
 > than silently corrected.
+
+## Razorpay payments
+
+Add these values to `.env.local` (never commit this file):
+
+```env
+NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_your_key_id
+RAZORPAY_SECRET_ID=your_razorpay_key_secret
+RAZORPAY_WEBHOOK_SECRET=your_razorpay_webhook_secret
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your_server_only_service_role_key
+ADMIN_PASSWORD=use_a_long_random_admin_password
+ADMIN_SESSION_SECRET=use_a_different_long_random_secret
+```
+
+Use the **Test** API keys while developing and switch to the **Live** keys
+only in the production deployment environment. The secret is used only by the
+server route and must never be exposed in client code. The payment buttons
+create a Razorpay order through `src/app/api/payments/order/route.ts`, then
+verify the returned signature through `src/app/api/payments/verify/route.ts`.
+Run the SQL in `supabase/schema.sql` in the Supabase SQL Editor before testing.
+Customers enter delivery details before payment; paid orders appear at
+`/admin`. The Supabase service-role key, admin password and session secret must
+remain server-only and must never be committed.
+
+In Razorpay Dashboard, create a webhook pointing to
+`https://your-domain.example/api/payments/webhook`, use the same secret in
+`RAZORPAY_WEBHOOK_SECRET`, and subscribe to `payment.captured`. The webhook
+signature is verified against the raw request body and duplicate event IDs are
+ignored.
 
 ## Ready for Phase 2
 

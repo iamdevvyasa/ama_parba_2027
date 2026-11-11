@@ -87,7 +87,7 @@ export const personalise = {
     { step: "04", title: "Choose a style", detail: "Traditional, minimal, floral, festive - or let our illustrator decide." },
   ],
   cta: { label: "Personalise a card", href: "#gifting" },
-  phaseNote: "The personalisation form opens with checkout in the next release.",
+  phaseNote: "Buy now and share your personalisation details with us after checkout.",
 } as const;
 
 export const occasions: Occasion[] = [
@@ -291,7 +291,7 @@ export const faqs = [
   },
   {
     q: "How does the personalised card work?",
-    a: "Choose the personalised box, then give us the date, occasion, names and a short message. Our illustrator designs one card around it. The form opens with checkout in the next release.",
+    a: "Choose the personalised box and buy it securely. After checkout, share the date, occasion, names and a short message with us. Our illustrator then designs one card around it.",
   },
   {
     q: "Can I customize the card in Odia?",
