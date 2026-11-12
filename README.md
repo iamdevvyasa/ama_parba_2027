@@ -132,17 +132,15 @@ which supersedes earlier drafts.
 
 | Quantity | Standard | Customised |
 | --- | --- | --- |
-| 1 box | ₹349 | ₹369 |
-| 5 boxes | ₹329 | ₹329 |
-| 10 boxes | ₹289 | ₹299 |
+| 1 box | ₹249 | ₹279 |
+| 5 boxes | ₹219 | ₹229 |
+| 10 boxes | ₹199 | ₹219 |
 
 Standard box = 13 festival cards. Customised box = 14 cards (13 + 1
 personalised special-date card).
 
-> The update's own verification note flags the **5-box customised rate (₹329)**
-> for confirmation — it does not undercut the standard 5-box rate, which is
-> unusual. Carried through as written and flagged in `data/products.ts` rather
-> than silently corrected.
+> Prices are supplied by the Ama Parba team and are used for both the website
+> display and server-side Razorpay order amounts.
 
 ## Razorpay payments
 

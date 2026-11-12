@@ -81,7 +81,7 @@ export function Header() {
 
           <div className="flex items-center gap-1.5 xs:gap-2.5">
             <Button href="#pricing" size="sm" className="hidden xs:inline-flex">
-              Shop Now
+              Buy Now
             </Button>
 
             <button
@@ -180,7 +180,7 @@ function MobileDrawer({
 
         <div className="border-t border-earth/10 px-gutter py-5">
           <Button href="#pricing" size="lg" className="w-full" onClick={onClose}>
-            Shop Now
+            Buy Now
           </Button>
         </div>
 

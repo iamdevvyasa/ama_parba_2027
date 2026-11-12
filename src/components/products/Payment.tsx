@@ -220,9 +220,9 @@ export function Payment() {
 
                   <div className="mt-2 grid grid-cols-3 gap-2">
                     {[
-                      { qty: 1, label: "1 Box", rate: 349, save: null },
-                      { qty: 5, label: "5 Boxes", rate: 319, save: "Save ₹150" },
-                      { qty: 10, label: "10 Boxes", rate: 289, save: "Save ₹600" },
+                      { qty: 1, label: "1 Box", rate: 249, save: null },
+                      { qty: 5, label: "5 Boxes", rate: 219, save: "Save ₹150" },
+                      { qty: 10, label: "10 Boxes", rate: 199, save: "Save ₹500" },
                     ].map((tier) => {
                       const active =
                         tier.qty === 10
@@ -322,7 +322,7 @@ export function Payment() {
                   <div className="flex items-baseline gap-2">
                     {standardSavings > 0 && (
                       <span className="font-sans text-sm font-medium line-through text-earth-400">
-                        {formatINR(standardQty * 349)}
+                        {formatINR(standardQty * 249)}
                       </span>
                     )}
                     <span className="font-display text-fluid-2xl font-bold text-maroon">
@@ -402,9 +402,9 @@ export function Payment() {
 
                   <div className="mt-2 grid grid-cols-3 gap-2">
                     {[
-                      { qty: 1, label: "1 Box", rate: 369, save: null },
-                      { qty: 5, label: "5 Boxes", rate: 339, save: "Save ₹150" },
-                      { qty: 10, label: "10 Boxes", rate: 299, save: "Save ₹700" },
+                      { qty: 1, label: "1 Box", rate: 279, save: null },
+                      { qty: 5, label: "5 Boxes", rate: 229, save: "Save ₹250" },
+                      { qty: 10, label: "10 Boxes", rate: 219, save: "Save ₹600" },
                     ].map((tier) => {
                       const active =
                         tier.qty === 10
@@ -511,7 +511,7 @@ export function Payment() {
                   <div className="flex items-baseline gap-2">
                     {customisedSavings > 0 && (
                       <span className="font-sans text-sm font-medium line-through text-earth-400">
-                        {formatINR(customisedQty * 369)}
+                        {formatINR(customisedQty * 279)}
                       </span>
                     )}
                     <span className="font-display text-fluid-2xl font-bold text-maroon">

@@ -147,7 +147,7 @@ export function ClosingCta() {
             />
           </Button>
           <Button href="#pricing" variant="onDark" size="lg">
-            Pre-Order Now
+            Buy Now
           </Button>
         </div>
       </Reveal>

@@ -4,9 +4,7 @@ import type { PricingTier, Product } from "@/types";
  * Product and pricing confirmed by the "Pricing & Order Workflow Update"
  * appended to the objective report. These figures supersede earlier drafts.
  *
- * Outstanding: the update's own verification note flags the 5-box CUSTOMISED
- * rate (Rs 329/box) for confirmation - it does not undercut the standard
- * 5-box rate, which is unusual. Flagged below, not silently corrected.
+ * Current pricing supplied for launch.
  */
 
 export const products: Product[] = [
@@ -32,7 +30,7 @@ export const products: Product[] = [
         detail: "Printed sleeve and rigid box, packed by hand.",
       },
     ],
-    price: { amount: 349, currency: "INR", note: "per box" },
+    price: { amount: 249, currency: "INR", note: "per box" },
     image: null,
   },
   {
@@ -59,36 +57,36 @@ export const products: Product[] = [
         detail: "Printed sleeve and rigid box, packed by hand.",
       },
     ],
-    price: { amount: 369, currency: "INR", note: "per box" },
+    price: { amount: 279, currency: "INR", note: "per box" },
     image: null,
   },
 ];
 
 /**
  * Quantity tier calculation helpers.
- * Simple Box: 1-4: Rs 349/box | 5-9: Rs 319/box | 10+: Rs 289/box
- * Customised Box: 1-4: Rs 369/box | 5-9: Rs 339/box | 10+: Rs 299/box
+ * Simple Box: 1-4: Rs 249/box | 5-9: Rs 219/box | 10+: Rs 199/box
+ * Customised Box: 1-4: Rs 279/box | 5-9: Rs 229/box | 10+: Rs 219/box
  */
 export function getStandardUnitPrice(qty: number): number {
-  if (qty >= 10) return 289;
-  if (qty >= 5) return 319;
-  return 349;
+  if (qty >= 10) return 199;
+  if (qty >= 5) return 219;
+  return 249;
 }
 
 export function getCustomisedUnitPrice(qty: number): number {
-  if (qty >= 10) return 299;
-  if (qty >= 5) return 339;
-  return 369;
+  if (qty >= 10) return 219;
+  if (qty >= 5) return 229;
+  return 279;
 }
 
 export function getStandardTierSavings(qty: number): number {
-  const baseRate = 349;
+  const baseRate = 249;
   const currentRate = getStandardUnitPrice(qty);
   return (baseRate - currentRate) * qty;
 }
 
 export function getCustomisedTierSavings(qty: number): number {
-  const baseRate = 369;
+  const baseRate = 279;
   const currentRate = getCustomisedUnitPrice(qty);
   return (baseRate - currentRate) * qty;
 }
@@ -100,13 +98,13 @@ export const pricingTiers: Record<Product["id"], PricingTier[]> = {
       id: "standard-1",
       label: "Single box",
       quantity: "1 box",
-      price: { amount: 349, currency: "INR", note: "per box" },
+      price: { amount: 249, currency: "INR", note: "per box" },
     },
     {
       id: "standard-5",
       label: "For the family",
       quantity: "5 boxes",
-      price: { amount: 319, currency: "INR", note: "per box" },
+      price: { amount: 219, currency: "INR", note: "per box" },
       saving: "Save Rs 150",
       badge: "Most popular",
       featured: true,
@@ -115,8 +113,8 @@ export const pricingTiers: Record<Product["id"], PricingTier[]> = {
       id: "standard-10",
       label: "For everyone",
       quantity: "10 boxes",
-      price: { amount: 289, currency: "INR", note: "per box" },
-      saving: "Save Rs 600",
+      price: { amount: 199, currency: "INR", note: "per box" },
+      saving: "Save Rs 500",
       badge: "Best value",
     },
   ],
@@ -125,14 +123,14 @@ export const pricingTiers: Record<Product["id"], PricingTier[]> = {
       id: "custom-1",
       label: "Single box",
       quantity: "1 box",
-      price: { amount: 369, currency: "INR", note: "per box" },
+      price: { amount: 279, currency: "INR", note: "per box" },
     },
     {
       id: "custom-5",
       label: "For the family",
       quantity: "5 boxes",
-      price: { amount: 339, currency: "INR", note: "per box" },
-      saving: "Save Rs 150",
+      price: { amount: 229, currency: "INR", note: "per box" },
+      saving: "Save Rs 250",
       badge: "Most popular",
       featured: true,
     },
@@ -140,8 +138,8 @@ export const pricingTiers: Record<Product["id"], PricingTier[]> = {
       id: "custom-10",
       label: "For everyone",
       quantity: "10 boxes",
-      price: { amount: 299, currency: "INR", note: "per box" },
-      saving: "Save Rs 700",
+      price: { amount: 219, currency: "INR", note: "per box" },
+      saving: "Save Rs 600",
       badge: "Best value",
     },
   ],
