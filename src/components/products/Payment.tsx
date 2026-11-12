@@ -163,7 +163,7 @@ export function Payment() {
           alt=""
           fill
           sizes="100vw"
-          className="scale-[1.12] rotate-[4deg] object-cover opacity-60 saturate-100"
+          className="scale-[1.12] rotate-[4deg] object-cover opacity-60 blur-[3px] saturate-100"
         />
       </div>
       <SambalpuriBorder className="absolute inset-x-0 top-0 z-10" />
