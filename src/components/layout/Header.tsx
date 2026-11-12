@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   AnimatePresence,
   motion,
@@ -16,6 +17,7 @@ import { cn } from "@/lib/utils";
 import { Logo } from "./Logo";
 
 export function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
@@ -38,6 +40,16 @@ export function Header() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
+
+  if (pathname.startsWith("/admin")) {
+    return (
+      <header className="sticky top-0 z-40 w-full border-b border-earth/10 bg-ivory/95 backdrop-blur-md">
+        <div className="shell-wide flex h-[var(--header-h)] items-center">
+          <Logo />
+        </div>
+      </header>
+    );
+  }
 
   return (
     <>

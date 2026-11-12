@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Check, Minus, Plus } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Check, CheckCircle2, MessageCircle, Minus, Plus, X } from "lucide-react";
 import { SambalpuriBorder } from "@/components/ui/SambalpuriBorder";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { formatINR } from "@/lib/utils";
@@ -114,7 +115,10 @@ export function Payment() {
             setPaymentState({
               variant,
               status: "success",
-              message: "Payment received. We will contact you shortly for delivery details.",
+              message:
+                variant === "standard"
+                  ? "Your order is confirmed. It will be dispatched soon, and further updates will be shared on your phone and email."
+                  : "Your payment is confirmed. Our team will message you on WhatsApp for the personalisation details.",
             });
           } catch (error) {
             setPaymentState({
@@ -153,6 +157,15 @@ export function Payment() {
 
   return (
     <section id="pricing" className="relative overflow-hidden bg-[#FAF6EE] py-section">
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <Image
+          src="/images/ama-parba-product.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="scale-[1.12] rotate-[4deg] object-cover opacity-60 saturate-100"
+        />
+      </div>
       <SambalpuriBorder className="absolute inset-x-0 top-0 z-10" />
 
       <div className="shell relative z-10">
@@ -167,7 +180,7 @@ export function Payment() {
         <div className="mt-12 flex justify-center">
           <div className="grid w-full max-w-4xl gap-6 md:grid-cols-2">
             {/* ================= 1. STANDARD BOX ================= */}
-            <div className="relative flex flex-col justify-between rounded-card border-2 border-maroon/25 bg-[#FDFBF7] p-6 shadow-soft sm:p-7">
+            <div className="relative flex flex-col justify-between rounded-card border-2 border-maroon/25 bg-[#FDFBF7]/60 p-6 shadow-soft backdrop-blur-[3px] sm:p-7">
               <OdiaCornerMotif position="tl" />
               <OdiaCornerMotif position="tr" />
               <OdiaCornerMotif position="bl" />
@@ -293,6 +306,11 @@ export function Payment() {
                     <span>Free delivery across India</span>
                   </li>
                 </ul>
+                <div className="mt-4 rounded-panel border border-maroon/15 bg-maroon/[0.04] px-3 py-3 text-xs leading-relaxed text-earth-700">
+                  <span className="font-semibold text-maroon">After you buy:</span> Your order is
+                  confirmed instantly. We will dispatch it soon and share further updates on your
+                  phone and email.
+                </div>
               </div>
 
               {/* Total & Action */}
@@ -344,7 +362,7 @@ export function Payment() {
             </div>
 
             {/* ================= 2. PERSONALISED BOX ================= */}
-            <div className="relative flex flex-col justify-between rounded-card border-2 border-saffron/40 bg-[#FFFDF9] p-6 shadow-soft sm:p-7">
+            <div className="relative flex flex-col justify-between rounded-card border-2 border-saffron/40 bg-[#FFFDF9]/60 p-6 shadow-soft backdrop-blur-[3px] sm:p-7">
               <OdiaCornerMotif position="tl" />
               <OdiaCornerMotif position="tr" />
               <OdiaCornerMotif position="bl" />
@@ -474,6 +492,14 @@ export function Payment() {
                     <span>Free delivery across India</span>
                   </li>
                 </ul>
+                <div className="mt-4 flex gap-2 rounded-panel border border-saffron/35 bg-saffron/[0.08] px-3 py-3 text-xs leading-relaxed text-earth-700">
+                  <MessageCircle size={15} className="mt-0.5 shrink-0 text-maroon" />
+                  <span>
+                    <span className="font-semibold text-maroon">How personalisation works:</span>{" "}
+                    after payment, our team will message you on WhatsApp for your date, occasion,
+                    names and message. We will then create your special card.
+                  </span>
+                </div>
               </div>
 
               {/* Total & Action */}
@@ -607,6 +633,58 @@ export function Payment() {
               <ArrowRight size={16} />
             </button>
           </form>
+        </div>
+      )}
+      {paymentState?.status === "success" && (
+        <div
+          className="fixed inset-0 z-[60] grid place-items-center bg-earth-900/70 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="payment-success-title"
+        >
+          <div className="relative w-full max-w-md overflow-hidden rounded-card bg-[#FDFBF7] p-7 text-center shadow-lift sm:p-9">
+            <button
+              type="button"
+              onClick={() => setPaymentState(null)}
+              className="absolute right-4 top-4 rounded-full p-2 text-earth-500 transition-colors hover:bg-earth/10 hover:text-earth-900"
+              aria-label="Close payment confirmation"
+            >
+              <X size={18} />
+            </button>
+            <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-emerald-100 text-emerald-700">
+              <CheckCircle2 size={36} strokeWidth={2} />
+            </div>
+            <p className="mt-5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-maroon">
+              Payment successful
+            </p>
+            <h2 id="payment-success-title" className="mt-2 font-display text-3xl font-bold text-earth-900">
+              Thank you for choosing Ama Parba
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-earth-600">{paymentState.message}</p>
+            {paymentState.variant === "customised" && (
+              <div className="mt-5 flex items-center gap-3 rounded-panel bg-saffron/[0.1] px-4 py-3 text-left text-xs leading-relaxed text-earth-700">
+                <MessageCircle size={20} className="shrink-0 text-maroon" />
+                <span>
+                  Please keep your phone available. Our WhatsApp message will contain the next
+                  personalisation steps.
+                </span>
+              </div>
+            )}
+            {paymentState.variant === "standard" && (
+              <div className="mt-5 rounded-panel bg-maroon/[0.05] px-4 py-3 text-left text-xs leading-relaxed text-earth-700">
+                <span className="font-semibold text-maroon">What happens next?</span> We will
+                dispatch your order soon and share further information through your phone number
+                and email.
+              </div>
+            )}
+            <button
+              type="button"
+              onClick={() => setPaymentState(null)}
+              className="mt-6 min-h-11 w-full rounded-pill bg-maroon px-5 font-sans text-sm font-semibold text-ivory transition-colors hover:bg-maroon-600"
+            >
+              Continue exploring
+            </button>
+          </div>
         </div>
       )}
     </section>
